@@ -20,7 +20,7 @@ function mainController($scope, $http) {
 				$scope.formData = {}; // clear the form so out user is ready to enter another
 				$scope.todos = data;
 				console.log(data);
-			});
+			})
 			.error(function(data) {
 				console.log('Error:', data);
 			});
@@ -38,3 +38,5 @@ function mainController($scope, $http) {
 			});
 	};
 }
+
+console.log('Hi!')
