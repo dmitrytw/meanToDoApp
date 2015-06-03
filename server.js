@@ -11,7 +11,7 @@ var express = require('express'),
 
 //configuration
 
-mongoose.connect('mongodb://dima:111@proximus.modulusmongo.net:27017/asO5vono'); //connect to mongodb database
+mongoose.connect('mongodb://dima:111@proximus.modulusmongo.net:27017/E8movizy'); //connect to mongodb database
 
 app.use(express.static(__dirname + '/public')); // set the static files location
 app.use(morgan('dev')); // log every request to the console
@@ -64,19 +64,19 @@ var Todo = mongoose.model('Todo', {
 
 	});
 
-	//delete a todo
-	app.delete('/api/todos/:todo_id', function(req, res){
-		Todo.remove({
-			_id : req.params.todo_id
-		}, function(err, todo) {
-			if (err)
-				res.send(err);
+	// delete a todo
+    app.delete('/api/todos/:todo_id', function(req, res) {
+        Todo.remove({
+            _id : req.params.todo_id
+        }, function(err, todo) {
+            if (err)
+                res.send(err);
 
-			//get and return all the todos after you create another
-			Todo.find(function(err, todos){
-				if (err)
-					res.send(err)
-				res.json(todos);
+            // get and return all the todos after you create another
+            Todo.find(function(err, todos) {
+                if (err)
+                    res.send(err)
+                res.json(todos);
 			});
 		});
 	});
