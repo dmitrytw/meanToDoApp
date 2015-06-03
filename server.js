@@ -82,6 +82,13 @@ var Todo = mongoose.model('Todo', {
 	});
 
 
+// application-------------------
+app.get('*', function(req, res){
+	res.sendfile('./public/index.html'); //load the single view file (angular will handle the pade changed on the front-end)
+
+});
+
+
 
 
 
