@@ -5,7 +5,7 @@
 var express = require('express'),
 	app = express(), //create app with express
 	mongoose = require('mongoose'), // mongoose for mongodb
-	port = process.env.PORT || 8080, // set the port
+	port = process.env.PORT || 5000, // set the port
 	database = require('./config/database'), //load the database config
 	morgan = require('morgan'), // log requests to the console (express4)
 	bodyParser = require('body-parser'), // pull info from HTML POST (express4)

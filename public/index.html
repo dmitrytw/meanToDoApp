@@ -2,54 +2,49 @@
 <html lang="en" ng-app="myTodo">
 <head>
 	<meta charset="UTF-8">
-	<title>My Todo App (Node&Angular)</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"><!-- load bootstrap -->
-	<link rel="stylesheet" href="css/styles.css">
+	<title>ToDo list</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"><!-- load fontAwesome-->
+	<link rel="stylesheet" href="css/main.css"><!-- load customStyles-->
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+	<!--load google fonts Roboto -->
 
-	 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script><!-- load angular -->
     <script src="js/controllers/main.js"></script>
     <script src="js/services/todos.js"></script>
-    <script src="js/core.js"></script>
+    <script src="js/core.js"></script> 
 </head>
-<!-- Set the controller and get all todos -->
 <body ng-controller = "mainController">
-	<div class="container">
-		<!-- Header and todo count -->
-		<div class="jumbotron text-center">
-			<h1>I'm a ToDo-aholic <span class="label label-info"> {{ todos.length }} </span></h1>
+	<div class="flex-container">
+		<div class="flex-item add-todo">
+			<form novalidate>
+				<input type="text" placeholder="Add new task: Go to the GYM!"ng-model="formData.text" ng-minlength="3" required/>
+				<button class="btn" ng-click="createTodo()">+</button>
+			</form>
 		</div>
-		<!-- ToDo list -->
-		 <!-- TODO LIST -->
-        <div id="todo-list" class="row">
-            <div class="col-sm-4 col-sm-offset-4">
+		<div class="flex-item info"><h1>This is my TO-DO list</h1></div>
+		<div class="flex-item search">
+			<input type="text" placeholder="Seach in tasks" ng-model="searchTodo">
+		</div>
+		<div class="flex-item todo">
+	
+			<!-- LOOP OVER THE TODOS IN $scope.todos -->
+            <div class="checkbox" ng-repeat="todo in todos | filter: searchTodo" >
+                <label ng-class="{checked: checked, bold: important}">
+                    <input type="checkbox" ng-model="checked" ng-class="{checked: checked}"> {{ todo.text }}
 
-                <!-- LOOP OVER THE TODOS IN $scope.todos -->
-                <div class="checkbox" ng-repeat="todo in todos">
-                    <label>
-                        <input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
-                    </label>
-                </div>
-
+                </label>
+                <label>
+				<button class="btn del-btn" ng-click="deleteTodo(todo._id)">-</button>
             </div>
-        </div>
-		<!-- FORM TO CREATE TODOS -->
-        <div id="todo-form" class="row">
-            <div class="col-sm-8 col-sm-offset-2 text-center">
-            	<!-- Form to create todos -->
-				<form>
-					<div class="form-group">
-						<!-- Bind this value to formData.text in Angular -->
-						<input type="text" class="form-control text-center input-lg" placeholder="I want to go to GYM and make my muscles crazy!" ng-model="formData.text">
-						
-					</div>
-					<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
-				</form>
-				
-			</div>
 		</div>
-
+		<div class="flex-item footer">
+			
+			<p>Do it!</p>
+			<p>Mean ToDo App (Angular.js, Node.js, Express.js, MongoDB).</p>
+			<p>Created by Dima Tolstykh</p>
+		</div>
 	</div>
-
 </body>
 </html>

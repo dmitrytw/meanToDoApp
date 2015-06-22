@@ -5,13 +5,32 @@ html {
 
 body {
 	padding-top: 50px;
+	font-family: 'Roboto', sans-serif;
 }
 
 #todo-list {
 	margin-bottom: 30px;
 }
 
+#todo-list label {
+	font-size: 18px;
+	line-height: 20px;
+}
+
 .jumbotron h1 {
 	color: green;
 }
+
+
+
+#todo-list input {
+	border: none;
+}
+
+
+#todo-form button {
+	width: 100%;
+}
+
+
 

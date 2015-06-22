@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myTodo">
+<head>
+	<meta charset="UTF-8">
+	<title>My Todo App (Node&Angular)</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"><!-- load bootstrap -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"><!-- load fontAwesome-->
+	<link rel="stylesheet" href="css/styles.css"><!-- load customStyles-->
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+	<!--load google fonts Roboto -->
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script><!-- load angular -->
+    <script src="js/controllers/main.js"></script>
+    <script src="js/services/todos.js"></script>
+    <script src="js/core.js"></script> 
+</head>
+<!-- Set the controller and get all todos -->
+<body ng-controller = "mainController">
+	<!-- FORM TO CREATE TODOS -->
+    <div id="todo-form">
+        	<!-- Form to create todos -->
+        <div class="container">
+			<form class="form-horizontal row">
+				<div class="form-group col-xs-9">
+					<!-- Bind this value to formData.text in Angular -->
+					<input type="text" class="form-control text-center input-lg" placeholder="I want to go to GYM and make my muscles crazy!" ng-model="formData.text">
+				</div>
+				<div class="col-xs-3"><button type="submit" class="btn btn-success btn-lg" ng-click="createTodo()">Add</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="container">
+		<!-- Header and todo count -->
+		<div class="jumbotron text-center">
+			<h1>I'm a ToDo-aholic <span class="label label-info"> {{ todos.length }} </span></h1>
+			<hr/>
+		
+		</div>
+		<!-- Search -->
+		<form>
+			<div class="form-group">
+				<div class="input-group">
+					<div class="input-group-addon"><i class="fa fa-search"></i></div>
+					<input type="text" class="form-control" placeholder="Search da Fish" ng-model="searchTodo">
+				</div>
+			</div>
+		</form>
+		<!-- ToDo list -->
+        <div id="todo-list" class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+
+                <!-- LOOP OVER THE TODOS IN $scope.todos -->
+                <div class="checkbox" ng-repeat="todo in todos | filter: searchTodo">
+                    <label>
+                        <input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
+                    </label>
+                </div>
+
+            </div>
+        </div>
+		
+
+	</div>
+
+</body>
+</html>
