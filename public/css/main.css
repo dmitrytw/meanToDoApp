@@ -26,7 +26,7 @@ body {
 }
 
 .search input:focus {
-    border-bottom: 1px solid #777;
+    border-bottom: 1px solid #EEF5DB;
 }
 .add-todo form {
 
@@ -48,10 +48,10 @@ body {
     width: 600px;
     min-height: 48px;
     border: none;
-
     font-size: 18px;
 
 }
+
 .add-todo button {
     background-color: #0f9d58;
     min-width: 48px;
@@ -62,9 +62,11 @@ body {
     font-size: 18px;
 }
 
+
 .btn, input {
     outline: none;
 }
+
 .checkbox {
     font-size: 18px;
     padding: 10px 0;
@@ -76,6 +78,12 @@ body {
 
 }
 
+.checkbox label {
+    overflow: none;
+    word-wrap: break-word;
+    max-width: 80%;
+    padding:0 10px;
+}
 
 .checkbox:nth-child(even) {
     background-color: #EEF5DB;
@@ -99,6 +107,11 @@ body {
     border:none;
     color:#fff;
     margin-left: 15px;
+}
+
+.checkbox .del-btn:hover, .add-todo button:hover {
+    box-shadow: 2px 3px 3px #999999;
+    
 }
 
 .footer {
@@ -133,22 +146,21 @@ body {
     flex: 0 1 auto;
     align-self: stretch;
     }
-    
-.fab {
-      position: relative;
-      display: inline-block;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      color: #fff;
-      overflow: hidden;
-      transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      transition-delay: 0.2s;
-      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-    }
 
-
-    .fab:active {
-      box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
-      transition-delay: 0s;
+@media screen and (max-width: 678px) {
+    .add-todo input, .search input {
+        width: 400px;   
     }
+    .checkbox {
+    width: 400px;
+    }
+    .checkbox label{
+    max-width: 70%;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .add-todo input, .search input {
+        width: 80%;   
+    }
+}

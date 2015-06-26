@@ -3,14 +3,21 @@
 <head>
 	<meta charset="UTF-8">
 	<title>ToDo list</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"><!-- load fontAwesome-->
-	<link rel="stylesheet" href="css/main.css"><!-- load customStyles-->
-	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-	<!--load google fonts Roboto -->
 
+	<!--Set viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!--Stylesheets-->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"><!-- load fontAwesome-->
+	<link rel="stylesheet" href="css/main.css"/><!-- load customStyles-->
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'/>
+	<!--load google fonts Roboto -->
+	<link rel="stylesheet" href="css/animations.css"/>
+
+	<!--Scripts-->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script><!-- load angular -->
+    <script src="https://code.angularjs.org/1.2.4/angular-animate.min.js"></script><!-- load angular-animate -->
     <script src="js/controllers/main.js"></script>
     <script src="js/services/todos.js"></script>
     <script src="js/core.js"></script> 
@@ -23,7 +30,7 @@
 				<button class="btn" ng-click="createTodo()">+</button>
 			</form>
 		</div>
-		<div class="flex-item info"><h1>This is my TO-DO list</h1></div>
+		<div class="flex-item info"><h1>Create new task for me!</h1></div>
 		<div class="flex-item search">
 			<input type="text" placeholder="Seach in tasks" ng-model="searchTodo">
 		</div>
@@ -32,11 +39,12 @@
 			<!-- LOOP OVER THE TODOS IN $scope.todos -->
             <div class="checkbox" ng-repeat="todo in todos | filter: searchTodo" >
                 <label ng-class="{checked: checked, bold: important}">
-                    <input type="checkbox" ng-model="checked" ng-class="{checked: checked}"> {{ todo.text }}
+                    <input type="checkbox" ng-model="checked" ng-class="{checked: checked}">{{ todo.text }}
 
                 </label>
                 <label>
 				<button class="btn del-btn" ng-click="deleteTodo(todo._id)">-</button>
+				</label>
             </div>
 		</div>
 		<div class="flex-item footer">
